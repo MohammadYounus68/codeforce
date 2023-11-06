@@ -1,0 +1,8 @@
+[
+	
+	{ "keys": ["ctrl+shift+u"], "command": "auto_save", "args": {"all_files": false, "backup": true} }
+
+
+
+
+]
