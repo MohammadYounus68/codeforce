@@ -1,3 +1,13 @@
+/*
+what is t-prime ?
+A number is called t-prime if it has exactly three(3) divisors
+x = p^2
+example 
+x = 9 
+x = 3 * 3
+=1,3,9 is 9 divisors and 3 is prime number
+
+*/
 #include <bits/stdc++.h>
 #include <cmath>
 using namespace std;
@@ -8,41 +18,31 @@ using namespace std;
 #define fast ios::sync_with_stdio(false);cin.tie(NULL);
 #define all(x) x.begin(), x.end()
 #define pb push_back
-const int N = 1e6 + 5;
-vector<bool> isPrime(N,false);
-void seive() {
-    isPrime[0] = isPrime[1] = true;
+const int N = 1e6 + 6;
+vector<bool> isPrime(N,false); //initial value is false = 0;
+void seive() {//seive algo using prime check
+    isPrime[0] = isPrime[1] = true; //bcz 1 is always is divisors so not check
     for(int i = 2; i * i <= N; i++) {
-        if(!isPrime[i]) {
+        if(!isPrime[i]) { //!isPrime[i] mean isPrime[i] == false check
             for(int j = i * i; j <= N; j += i) {
-                isPrime[j] = true;
+                //multiple number is always divisors so its true 
+                isPrime[j] = true; 
             }
         }
     }
-    
 }
 int main() {
-    seive();  
-    int n; cin >> n; 
-    while(n--) {
+    seive();
+    int t; cin >> t;
+    while (t--) {   
         ll x; cin >> x;
-        long long root = sqrt(x);
-        if(root * root == x && !isPrime[root]) {
-            cout << "YES\n";
+        ll root = sqrt(x);// x = 9 so root * root 3 * 3
+        if(root * root == x && !isPrime[root]) { // check root number prime or not prime
+            cout << "YES\n";          
+
         }else {
             cout << "NO\n";
         }
     }
     return 0;
 }
-
-/*
-3
-4 5 6
-YES
-NO
-NO
-
-https://codeforces.com/contest/230/problem/B
-
-*/
